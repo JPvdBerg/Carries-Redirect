@@ -6,50 +6,76 @@
   <title>Carries Boutique — Contact Us on WhatsApp</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      margin: 0;
-      height: 100vh;
+      min-height: 100vh; /* allow body to grow naturally */
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #ff6f91, #ff9671, #ffc75f);
       background-size: 200% 200%;
-      animation: gradientShift 12s ease infinite;
-      font-family: 'Inter', sans-serif;
-      color: #333;
+      animation: gradientShift 10s ease infinite;
+      position: relative;
+      padding: 5vh 1rem; /* breathing room top/bottom */
+      overflow: visible; /* let blobs extend outside */
     }
 
+    /* Background Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.6;
+      animation: blobMove 20s infinite alternate;
+      z-index: 0;
+    }
+
+    .blob1 { width: 400px; height: 400px; background: #ff6f91; top: -100px; left: -150px; }
+    .blob2 { width: 500px; height: 500px; background: #ff9671; bottom: -150px; right: -200px; animation-delay: 5s; }
+    .blob3 { width: 300px; height: 300px; background: #ffc75f; top: 150px; right: -100px; animation-delay: 10s; }
+
+    @keyframes blobMove {
+      0% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(50px,-30px) scale(1.1); }
+      100% { transform: translate(-30px,50px) scale(0.95); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Card */
     .card {
-      background: linear-gradient(145deg, #ffffff, #fafafa);
+      position: relative;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
       border-radius: 24px;
-      padding: 3.2rem 2.8rem;
+      padding: 3rem 2.5rem;
       text-align: center;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.05);
       animation: fadeIn 1s ease-in-out;
-      max-width: 460px;
+      max-width: 480px;
       width: 90%;
+      z-index: 1;
+      transition: transform 0.2s ease;
+      margin-top: 0; /* reset any extra spacing */
     }
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.3rem;
-      margin-bottom: 1rem;
-      color: #b93e65; /* refined magenta accent */
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
+    .logo { width: 130px; margin: 0 auto 1.5rem auto; display: block; animation: logoEnter 1s ease forwards; }
+    @keyframes logoEnter { 0% { opacity: 0; transform: scale(0.5) rotate(-15deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 2.4rem;
-      color: #555;
-      line-height: 1.6;
-    }
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 1rem; color: #b93e65; font-weight: 600; letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
+    p { font-size: 1.05rem; margin-bottom: 1.5rem; color: #555; line-height: 1.6; }
+    .micro-copy { font-size: 0.9rem; color: #777; margin-bottom: 0.75rem; }
 
     a.whatsapp-btn {
       display: inline-block;
-      padding: 1.1rem 2.8rem;
+      padding: 1rem 2.5rem;
       font-size: 1.2rem;
       font-weight: 600;
       color: #fff;
@@ -58,33 +84,68 @@
       text-decoration: none;
       transition: all 0.25s ease;
       box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+      position: relative;
+      overflow: hidden;
     }
 
-    a.whatsapp-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      background: linear-gradient(135deg, #20b358, #169f4a);
-      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+    a.whatsapp-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255,255,255,0.3);
+      transform: skewX(-25deg);
+      transition: all 0.5s;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    a.whatsapp-btn:hover::after { left: 125%; }
+    a.whatsapp-btn:hover { transform: translateY(-3px) scale(1.05); background: linear-gradient(135deg, #20b358, #169f4a); box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55); }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 500px) {
+      .card { padding: 2rem 1.5rem; }
+      a.whatsapp-btn { width: 100%; padding: 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
+  <!-- Blobs -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <!-- Card -->
+  <div class="card" id="card">
+    <img src="WhatsApp Image 2025-09-06 at 10.00.02.jpeg" alt="Carries Boutique Logo" class="logo">
     <h1>Carries Boutique</h1>
     <p>From custom fabric to bold designs — we bring your style to life.</p>
-    <a class="whatsapp-btn" href="https://wa.me/27828735697" target="_blank">
-      Message Us on WhatsApp
-    </a>
+    <div class="micro-copy">We reply within 2 hours!</div>
+    <a class="whatsapp-btn" href="https://wa.me/27828735697" target="_blank">Message Us on WhatsApp</a>
   </div>
+
+  <script>
+    // Smooth Parallax Card
+    const card = document.getElementById('card');
+    let rotateX = 0, rotateY = 0;
+    let mouseX = 0, mouseY = 0;
+
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      mouseX = e.clientX - rect.left - rect.width / 2;
+      mouseY = e.clientY - rect.top - rect.height / 2;
+    });
+
+    function updateCard() {
+      rotateY += (mouseX * 0.05 - rotateY) * 0.1;
+      rotateX += (-mouseY * 0.05 - rotateX) * 0.1;
+      card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+      requestAnimationFrame(updateCard);
+    }
+
+    card.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; });
+    updateCard();
+  </script>
 </body>
 </html>
