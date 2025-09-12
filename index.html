@@ -133,13 +133,6 @@
       animation: fadeSlideIn 1s ease forwards 0.9s; opacity: 0;
     }
     .qr-container img { width: 200px; height: 200px; margin-top: 0.5rem; position: relative; }
-    .qr-container img:hover::after {
-      content: "Scan me!";
-      position: absolute;
-      top: -25px; left: 50%; transform: translateX(-50%);
-      background: #333; color: #fff; font-size: 0.8rem; padding: 4px 8px;
-      border-radius: 6px;
-    }
 
     .copy-number {
       margin-top: 0.5rem;
@@ -184,27 +177,35 @@
     }
 
     /* Mobile adjustments */
-@media (max-width: 500px) {
-  .card {
-    width: 95%;
-    padding: 2rem 1.5rem;
-  }
-  h1 { font-size: 2rem; }
-  p { font-size: 1rem; margin-bottom: 1rem; }
-  a.whatsapp-btn {
-    width: 90%;
-    font-size: 1.1rem;
-    padding: 1rem;
-    position: fixed;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0;
-  }
-  .blob { display: none; }
-  .qr-container img { width: 150px; height: 150px; }
-  .qr-container { margin-bottom: 3rem; }
-}
+    @media (max-width: 500px) {
+      .card {
+        width: 95%;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; margin-bottom: 1rem; }
+      .qr-container img { width: 140px; height: 140px; }
+      .qr-container { margin-bottom: 5rem; } /* space for fixed button */
+      .socials { gap: 0.8rem; margin-top: 1.5rem; }
+      .blob { display: none; }
+      .copy-number { font-size: 0.85rem; }
+
+      /* Fixed WhatsApp button */
+      a.whatsapp-btn {
+        width: calc(90% - 1rem);
+        font-size: 1.1rem;
+        padding: 1rem;
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        margin-top: 0;
+      }
+    }
 
   </style>
 </head>
