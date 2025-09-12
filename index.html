@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us on WhatsApp</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+  <title>Carries Boutique — Contact Us on WhatsApp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -12,44 +12,78 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #0d0d0d;
+      background: linear-gradient(135deg, #ff6f91, #ff9671, #ffc75f);
+      background-size: 200% 200%;
+      animation: gradientShift 12s ease infinite;
       font-family: 'Inter', sans-serif;
-      color: #fff;
+      color: #333;
     }
 
-    .container {
+    .card {
+      background: linear-gradient(145deg, #ffffff, #fafafa);
+      border-radius: 24px;
+      padding: 3.2rem 2.8rem;
       text-align: center;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      animation: fadeIn 1s ease-in-out;
+      max-width: 460px;
+      width: 90%;
     }
 
     h1 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #eac62c;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      margin-bottom: 1rem;
+      color: #b93e65; /* refined magenta accent */
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2.4rem;
+      color: #555;
+      line-height: 1.6;
     }
 
     a.whatsapp-btn {
       display: inline-block;
-      padding: 1rem 2rem;
+      padding: 1.1rem 2.8rem;
       font-size: 1.2rem;
       font-weight: 600;
-      color: #0d0d0d;
-      background-color: #25D366;
-      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(135deg, #25D366, #1ebe5a);
+      border-radius: 50px;
       text-decoration: none;
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
     }
 
     a.whatsapp-btn:hover {
-      transform: scale(1.05);
-      background-color: #20b358;
+      transform: translateY(-3px) scale(1.05);
+      background: linear-gradient(135deg, #20b358, #169f4a);
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Contact Us on WhatsApp</h1>
+  <div class="card">
+    <h1>Carries Boutique</h1>
+    <p>From custom fabric to bold designs — we bring your style to life.</p>
     <a class="whatsapp-btn" href="https://wa.me/27828735697" target="_blank">
-      Message Us
+      Message Us on WhatsApp
     </a>
   </div>
 </body>
