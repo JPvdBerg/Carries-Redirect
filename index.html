@@ -51,7 +51,7 @@
     /* Card */
     .card {
       position: relative;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.85); /* frosted glass */
       backdrop-filter: blur(10px);
       border-radius: 24px;
       padding: 3rem 2.5rem;
@@ -86,7 +86,7 @@
       position: relative;
       overflow: hidden;
       z-index: 2;
-      margin-top: 1.5rem; /* Added spacing above the button */
+      margin-top: 1.5rem;
     }
 
     a.whatsapp-btn::after {
@@ -125,58 +125,12 @@
         bottom: 1rem;
         left: 50%;
         transform: translateX(-50%);
-        margin-top: 0; /* remove desktop margin on mobile */
+        margin-top: 0;
       }
       .blob { display: none; }
       .qr-container img { width: 150px; height: 150px; }
-      .qr-container { margin-bottom: 3rem; } /* space above fixed button */
+      .qr-container { margin-bottom: 3rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Background Blobs -->
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-  <div class="blob blob3"></div>
-
-  <!-- Main Card -->
-  <div class="card" id="card">
-    <img src="https://i.imgur.com/aZMAIjh.jpeg" alt="Carries Boutique Logo" class="logo">
-    <h1>Carries Boutique</h1>
-    <p>From custom fabric to bold designs — we bring your style to life.</p>
-
-    <!-- QR Code -->
-    <div class="qr-container">
-      <p>Scan to chat on WhatsApp:</p>
-      <img src="https://i.imgur.com/xKy9skZ.png" alt="WhatsApp QR Code">
-    </div>
-
-    <a class="whatsapp-btn" href="https://wa.me/27828735697" target="_blank">Message Us on WhatsApp</a>
-  </div>
-
-  <script>
-    // Smooth Parallax Card (disabled on touch devices)
-    const card = document.getElementById('card');
-    if (!('ontouchstart' in window)) {
-      let rotateX = 0, rotateY = 0;
-      let mouseX = 0, mouseY = 0;
-
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        mouseX = e.clientX - rect.left - rect.width / 2;
-        mouseY = e.clientY - rect.top - rect.height / 2;
-      });
-
-      function updateCard() {
-        rotateY += (mouseX * 0.05 - rotateY) * 0.1;
-        rotateX += (-mouseY * 0.05 - rotateX) * 0.1;
-        card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-        requestAnimationFrame(updateCard);
-      }
-
-      card.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; });
-      updateCard();
-    }
-  </script>
-</body>
-</html>
