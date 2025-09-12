@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carries Boutique — Contact Us on WhatsApp</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://i.imgur.com/KNRtw3t.png" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -51,7 +53,7 @@
     /* Card */
     .card {
       position: relative;
-      background: #ffffff; /* solid white */
+      background: #ffffff;
       border-radius: 24px;
       padding: 3rem 2.5rem;
       text-align: center;
@@ -62,15 +64,31 @@
       width: 90%;
       z-index: 1;
       transition: transform 0.2s ease;
-      margin-top: 0;
     }
 
-    .logo { width: 130px; margin: 0 auto 1.5rem auto; display: block; animation: logoEnter 1s ease forwards; }
+    .logo { 
+      width: 130px; margin: 0 auto 1.5rem auto; display: block; 
+      animation: logoEnter 1s ease forwards;
+    }
     @keyframes logoEnter { 0% { opacity: 0; transform: scale(0.5) rotate(-15deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
 
-    h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 1rem; color: #b93e65; font-weight: 600; letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
-    p { font-size: 1.05rem; margin-bottom: 1.5rem; color: #555; line-height: 1.6; }
+    h1 { 
+      font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 1rem; 
+      color: #b93e65; font-weight: 600; letter-spacing: 0.5px; 
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+      animation: fadeSlideIn 1s ease forwards 0.3s; opacity: 0;
+    }
+    p { 
+      font-size: 1.05rem; margin-bottom: 1.5rem; color: #555; line-height: 1.6;
+      animation: fadeSlideIn 1s ease forwards 0.6s; opacity: 0;
+    }
 
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* WhatsApp button */
     a.whatsapp-btn {
       display: inline-block;
       padding: 1.2rem 2.5rem;
@@ -85,50 +103,100 @@
       position: relative;
       overflow: hidden;
       z-index: 2;
-      margin-top: 1.5rem; /* spacing above button */
+      margin-top: 1.5rem;
+      animation: fadeSlideIn 1s ease forwards 1.2s; opacity: 0;
     }
-
     a.whatsapp-btn::after {
       content: '';
       position: absolute;
       top: 0; left: -75%;
-      width: 50%;
-      height: 100%;
+      width: 50%; height: 100%;
       background: rgba(255,255,255,0.3);
       transform: skewX(-25deg);
       transition: all 0.5s;
     }
-
     a.whatsapp-btn:hover::after { left: 125%; }
-    a.whatsapp-btn:hover { transform: translateY(-3px) scale(1.05); background: linear-gradient(135deg, #20b358, #169f4a); box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55); }
+    a.whatsapp-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 20px rgba(37,211,102,0.7); }
+
+    /* Ripple on click */
+    a.whatsapp-btn:active {
+      animation: ripple 0.4s ease;
+    }
+    @keyframes ripple {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+      100% { box-shadow: 0 0 0 20px rgba(37,211,102,0); }
+    }
 
     /* QR container */
-    .qr-container { margin-top: 2rem; margin-bottom: 1rem; text-align: center; }
-    .qr-container img { width: 200px; height: 200px; margin-top: 0.5rem; }
+    .qr-container { 
+      margin-top: 2rem; margin-bottom: 1rem; text-align: center;
+      animation: fadeSlideIn 1s ease forwards 0.9s; opacity: 0;
+    }
+    .qr-container img { width: 200px; height: 200px; margin-top: 0.5rem; position: relative; }
+    .qr-container img:hover::after {
+      content: "Scan me!";
+      position: absolute;
+      top: -25px; left: 50%; transform: translateX(-50%);
+      background: #333; color: #fff; font-size: 0.8rem; padding: 4px 8px;
+      border-radius: 6px;
+    }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .copy-number {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #007b5e;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Social Bubbles */
+    .socials {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      animation: fadeSlideIn 1s ease forwards 1.5s; opacity: 0;
+    }
+    .socials a {
+      width: 50px; height: 50px;
+      display: flex; justify-content: center; align-items: center;
+      border-radius: 50%;
+      background: #eee;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      animation: float 4s ease-in-out infinite;
+    }
+    .socials a img { width: 24px; height: 24px; }
+    .socials a:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #777;
+      text-align: center;
+      animation: fadeSlideIn 1s ease forwards 1.8s; opacity: 0;
+    }
 
     /* Mobile adjustments */
     @media (max-width: 500px) {
-      .card {
-        width: 95%;
-        padding: 2rem 1.5rem;
-      }
+      .card { width: 95%; padding: 2rem 1.5rem; }
       h1 { font-size: 2rem; }
       p { font-size: 1rem; margin-bottom: 1rem; }
       a.whatsapp-btn {
-        width: 90%;
-        font-size: 1.1rem;
-        padding: 1rem;
-        position: fixed;
-        bottom: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
+        width: 90%; font-size: 1.1rem; padding: 1rem;
+        position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
         margin-top: 0;
       }
       .blob { display: none; }
       .qr-container img { width: 150px; height: 150px; }
       .qr-container { margin-bottom: 3rem; }
+      .socials { margin-bottom: 4rem; }
     }
   </style>
 </head>
@@ -148,9 +216,22 @@
     <div class="qr-container">
       <p>Scan to chat on WhatsApp:</p>
       <img src="https://i.imgur.com/xKy9skZ.png" alt="WhatsApp QR Code">
+      <div class="copy-number" onclick="copyNumber()">Copy WhatsApp: +27 82 873 5697</div>
     </div>
 
     <a class="whatsapp-btn" href="https://wa.me/27828735697" target="_blank">Message Us on WhatsApp</a>
+
+    <!-- Social Media Bubbles -->
+    <div class="socials">
+      <a href="https://www.facebook.com/p/Carries-100063057530393" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/its_sew_carries" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
+      <a href="https://www.tiktok.com/@carries039" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok"></a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      Made with ❤️ at Carries Boutique ✂️
+    </footer>
   </div>
 
   <script>
@@ -175,6 +256,13 @@
 
       card.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; });
       updateCard();
+    }
+
+    // Copy WhatsApp number
+    function copyNumber() {
+      navigator.clipboard.writeText("+27828735697").then(() => {
+        alert("WhatsApp number copied!");
+      });
     }
   </script>
 </body>
