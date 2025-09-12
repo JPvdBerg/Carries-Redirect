@@ -188,25 +188,21 @@
       h1 { font-size: 2rem; }
       p { font-size: 1rem; margin-bottom: 1rem; }
       .qr-container img { width: 140px; height: 140px; }
-      .qr-container { margin-bottom: 5rem; } /* space for fixed button */
+      .qr-container { margin-bottom: 2rem; } /* enough spacing inside card */
       .socials { gap: 0.8rem; margin-top: 1.5rem; }
       .blob { display: none; }
       .copy-number { font-size: 0.85rem; }
 
-      /* Fixed WhatsApp button */
+      /* WhatsApp button stays inside card, no floating */
       a.whatsapp-btn {
-        width: calc(90% - 1rem);
-        font-size: 1.1rem;
-        padding: 1rem;
-        position: fixed;
-        bottom: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        margin-top: 0;
+        width: 100%;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 1.5rem;
       }
     }
-
   </style>
 </head>
 <body>
@@ -260,19 +256,3 @@
         rotateY += (mouseX * 0.05 - rotateY) * 0.1;
         rotateX += (-mouseY * 0.05 - rotateX) * 0.1;
         card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-        requestAnimationFrame(updateCard);
-      }
-
-      card.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; });
-      updateCard();
-    }
-
-    // Copy WhatsApp number
-    function copyNumber() {
-      navigator.clipboard.writeText("+27828735697").then(() => {
-        alert("WhatsApp number copied!");
-      });
-    }
-  </script>
-</body>
-</html>
