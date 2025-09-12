@@ -74,7 +74,7 @@
 
     a.whatsapp-btn {
       display: inline-block;
-      padding: 1rem 2.5rem;
+      padding: 1.2rem 2.5rem;
       font-size: 1.2rem;
       font-weight: 600;
       color: #fff;
@@ -85,6 +85,7 @@
       box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
       position: relative;
       overflow: hidden;
+      z-index: 2;
     }
 
     a.whatsapp-btn::after {
@@ -103,19 +104,34 @@
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* Mobile adjustments */
     @media (max-width: 500px) {
-      .card { padding: 2rem 1.5rem; }
-      a.whatsapp-btn { width: 100%; padding: 1rem; }
+      .card {
+        width: 95%;
+        padding: 2rem 1.5rem;
+      }
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; margin-bottom: 1rem; }
+      a.whatsapp-btn {
+        width: 90%;
+        font-size: 1.1rem;
+        padding: 1rem;
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .blob { display: none; }
     }
   </style>
 </head>
 <body>
-  <!-- Blobs -->
+  <!-- Background Blobs -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
 
-  <!-- Card -->
+  <!-- Main Card -->
   <div class="card" id="card">
     <img src="https://i.imgur.com/aZMAIjh.jpeg" alt="Carries Boutique Logo" class="logo">
     <h1>Carries Boutique</h1>
@@ -124,26 +140,28 @@
   </div>
 
   <script>
-    // Smooth Parallax Card
+    // Smooth Parallax Card (disabled on touch devices)
     const card = document.getElementById('card');
-    let rotateX = 0, rotateY = 0;
-    let mouseX = 0, mouseY = 0;
+    if (!('ontouchstart' in window)) {
+      let rotateX = 0, rotateY = 0;
+      let mouseX = 0, mouseY = 0;
 
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      mouseX = e.clientX - rect.left - rect.width / 2;
-      mouseY = e.clientY - rect.top - rect.height / 2;
-    });
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        mouseX = e.clientX - rect.left - rect.width / 2;
+        mouseY = e.clientY - rect.top - rect.height / 2;
+      });
 
-    function updateCard() {
-      rotateY += (mouseX * 0.05 - rotateY) * 0.1;
-      rotateX += (-mouseY * 0.05 - rotateX) * 0.1;
-      card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-      requestAnimationFrame(updateCard);
+      function updateCard() {
+        rotateY += (mouseX * 0.05 - rotateY) * 0.1;
+        rotateX += (-mouseY * 0.05 - rotateX) * 0.1;
+        card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+        requestAnimationFrame(updateCard);
+      }
+
+      card.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; });
+      updateCard();
     }
-
-    card.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; });
-    updateCard();
   </script>
 </body>
 </html>
