@@ -1,209 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carries Boutique — Contact Us on WhatsApp</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://i.imgur.com/KNRtw3t.png" />
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Carries Boutique — Contact Us on WhatsApp</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://i.imgur.com/KNRtw3t.png" />
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #ff6f91, #ff9671, #ffc75f);
-      background-size: 200% 200%;
-      animation: gradientShift 10s ease infinite;
-      position: relative;
-      padding: 5vh 1rem;
-      overflow: visible;
-    }
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #ff6f91, #ff9671, #ffc75f);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+  position: relative;
+  padding: 5vh 1rem;
+  overflow: visible;
+}
 
-    /* Background Blobs */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.6;
-      animation: blobMove 20s infinite alternate;
-      z-index: 0;
-    }
+/* Background Blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  animation: blobMove 20s infinite alternate;
+  z-index: 0;
+}
+.blob1 { width: 400px; height: 400px; background: #ff6f91; top: -100px; left: -150px; }
+.blob2 { width: 500px; height: 500px; background: #ff9671; bottom: -150px; right: -200px; animation-delay: 5s; }
+.blob3 { width: 300px; height: 300px; background: #ffc75f; top: 150px; right: -100px; animation-delay: 10s; }
 
-    .blob1 { width: 400px; height: 400px; background: #ff6f91; top: -100px; left: -150px; }
-    .blob2 { width: 500px; height: 500px; background: #ff9671; bottom: -150px; right: -200px; animation-delay: 5s; }
-    .blob3 { width: 300px; height: 300px; background: #ffc75f; top: 150px; right: -100px; animation-delay: 10s; }
+@keyframes blobMove {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(50px,-30px) scale(1.1); }
+  100% { transform: translate(-30px,50px) scale(0.95); }
+}
 
-    @keyframes blobMove {
-      0% { transform: translate(0,0) scale(1); }
-      50% { transform: translate(50px,-30px) scale(1.1); }
-      100% { transform: translate(-30px,50px) scale(0.95); }
-    }
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+/* Card */
+.card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+  animation: fadeIn 1s ease-in-out;
+  max-width: 480px;
+  width: 90%;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
 
-    /* Card */
-    .card {
-      position: relative;
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 3rem 2.5rem;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-      border: 1px solid rgba(0,0,0,0.05);
-      animation: fadeIn 1s ease-in-out;
-      max-width: 480px;
-      width: 90%;
-      z-index: 1;
-      transition: transform 0.2s ease;
-    }
+.logo { 
+  width: 130px; margin: 0 auto 1.5rem auto; display: block; 
+  animation: logoEnter 1s ease forwards;
+}
+@keyframes logoEnter { 0% { opacity: 0; transform: scale(0.5) rotate(-15deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
 
-    .logo { 
-      width: 130px; margin: 0 auto 1.5rem auto; display: block; 
-      animation: logoEnter 1s ease forwards;
-    }
-    @keyframes logoEnter { 0% { opacity: 0; transform: scale(0.5) rotate(-15deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
+h1 { 
+  font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 1rem; 
+  color: #b93e65; font-weight: 600; letter-spacing: 0.5px; 
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+  animation: fadeSlideIn 1s ease forwards 0.3s; opacity: 0;
+}
+p { 
+  font-size: 1.05rem; margin-bottom: 1.5rem; color: #555; line-height: 1.6;
+  animation: fadeSlideIn 1s ease forwards 0.6s; opacity: 0;
+}
 
-    h1 { 
-      font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 1rem; 
-      color: #b93e65; font-weight: 600; letter-spacing: 0.5px; 
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-      animation: fadeSlideIn 1s ease forwards 0.3s; opacity: 0;
-    }
-    p { 
-      font-size: 1.05rem; margin-bottom: 1.5rem; color: #555; line-height: 1.6;
-      animation: fadeSlideIn 1s ease forwards 0.6s; opacity: 0;
-    }
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* WhatsApp button - simplified clean */
+a.whatsapp-btn {
+  display: inline-block;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #25D366, #1ebe5a);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+  margin-top: 1.5rem;
+  animation: fadeSlideIn 1s ease forwards 1.2s;
+  opacity: 0;
+}
+a.whatsapp-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(37, 211, 102, 0.5);
+}
 
-    /* WhatsApp button */
-    a.whatsapp-btn {
-      display: inline-block;
-      padding: 1.2rem 2.5rem;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #fff;
-      background: linear-gradient(135deg, #25D366, #1ebe5a);
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
-      position: relative;
-      overflow: hidden;
-      z-index: 2;
-      margin-top: 1.5rem;
-      animation: fadeSlideIn 1s ease forwards 1.2s; opacity: 0;
-    }
-    a.whatsapp-btn::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -75%;
-      width: 50%; height: 100%;
-      background: rgba(255,255,255,0.3);
-      transform: skewX(-25deg);
-      transition: all 0.5s;
-    }
-    a.whatsapp-btn:hover::after { left: 125%; }
-    a.whatsapp-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 20px rgba(37,211,102,0.7); }
+/* QR container */
+.qr-container { 
+  margin-top: 2rem; margin-bottom: 1rem; text-align: center;
+  animation: fadeSlideIn 1s ease forwards 0.9s; opacity: 0;
+}
+.qr-container img { width: 200px; height: 200px; margin-top: 0.5rem; position: relative; }
 
-    /* Ripple on click */
-    a.whatsapp-btn:active {
-      animation: ripple 0.4s ease;
-    }
-    @keyframes ripple {
-      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
-      100% { box-shadow: 0 0 0 20px rgba(37,211,102,0); }
-    }
+.copy-number {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #007b5e;
+  cursor: pointer;
+  text-decoration: underline;
+}
 
-    /* QR container */
-    .qr-container { 
-      margin-top: 2rem; margin-bottom: 1rem; text-align: center;
-      animation: fadeSlideIn 1s ease forwards 0.9s; opacity: 0;
-    }
-    .qr-container img { width: 200px; height: 200px; margin-top: 0.5rem; position: relative; }
+/* Social Bubbles with pulse and animated border */
+.socials {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  animation: fadeSlideIn 1s ease forwards 1.5s;
+  opacity: 0;
+}
+.socials a {
+  width: 50px; height: 50px;
+  display: flex; justify-content: center; align-items: center;
+  border-radius: 50%;
+  background: #eee;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+.socials a::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border-radius: 50%;
+  border: 2px solid #b93e65;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+.socials a:hover::before, .socials a:active::before {
+  transform: scale(1);
+}
+.socials a img { width: 24px; height: 24px; position: relative; }
 
-    .copy-number {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #007b5e;
-      cursor: pointer;
-      text-decoration: underline;
-    }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
 
-    /* Social Bubbles */
-    .socials {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      animation: fadeSlideIn 1s ease forwards 1.5s; opacity: 0;
-    }
-    .socials a {
-      width: 50px; height: 50px;
-      display: flex; justify-content: center; align-items: center;
-      border-radius: 50%;
-      background: #eee;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      animation: float 4s ease-in-out infinite;
-    }
-    .socials a img { width: 24px; height: 24px; }
-    .socials a:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+/* Footer */
+footer {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #777;
+  text-align: center;
+  animation: fadeSlideIn 1s ease forwards 1.8s; opacity: 0;
+}
 
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
+/* Mobile adjustments */
+@media (max-width: 500px) {
+  .card {
+    width: 95%;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 { font-size: 2rem; }
+  p { font-size: 1rem; margin-bottom: 1rem; }
+  .qr-container img { width: 140px; height: 140px; }
+  .qr-container { margin-bottom: 2rem; }
+  .socials { gap: 0.8rem; margin-top: 1.5rem; }
+  .blob { display: none; }
+  .copy-number { font-size: 0.85rem; }
+  a.whatsapp-btn {
+    width: 100%;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 1.5rem;
+  }
+}
 
-    /* Footer */
-    footer {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: #777;
-      text-align: center;
-      animation: fadeSlideIn 1s ease forwards 1.8s; opacity: 0;
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 500px) {
-      .card {
-        width: 95%;
-        padding: 2rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      h1 { font-size: 2rem; }
-      p { font-size: 1rem; margin-bottom: 1rem; }
-      .qr-container img { width: 140px; height: 140px; }
-      .qr-container { margin-bottom: 2rem; } /* enough spacing inside card */
-      .socials { gap: 0.8rem; margin-top: 1.5rem; }
-      .blob { display: none; }
-      .copy-number { font-size: 0.85rem; }
-
-      /* WhatsApp button stays inside card, no floating */
-      a.whatsapp-btn {
-        width: 100%;
-        position: relative;
-        bottom: auto;
-        left: auto;
-        transform: none;
-        margin-top: 1.5rem;
-      }
-    }
-  </style>
+/* Fade in animation */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
 </head>
 <body>
   <!-- Background Blobs -->
@@ -224,6 +222,7 @@
       <div class="copy-number" onclick="copyNumber()">Copy WhatsApp: +27 82 873 5697</div>
     </div>
 
+    <!-- Clean WhatsApp button -->
     <a class="whatsapp-btn" href="https://wa.me/27828735697" target="_blank">Message Us on WhatsApp</a>
 
     <!-- Social Media Bubbles -->
@@ -233,26 +232,17 @@
       <a href="https://www.tiktok.com/@carries039" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok"></a>
     </div>
 
-    <!-- Footer -->
     <footer>
       Made with ❤️ at Carries Boutique ✂️
     </footer>
   </div>
 
   <script>
-    // Smooth Parallax Card (disabled on touch devices)
-    const card = document.getElementById('card');
-    if (!('ontouchstart' in window)) {
-      let rotateX = 0, rotateY = 0;
-      let mouseX = 0, mouseY = 0;
-
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        mouseX = e.clientX - rect.left - rect.width / 2;
-        mouseY = e.clientY - rect.top - rect.height / 2;
+    function copyNumber() {
+      navigator.clipboard.writeText("+27 82 873 5697").then(() => {
+        alert("WhatsApp number copied!");
       });
-
-      function updateCard() {
-        rotateY += (mouseX * 0.05 - rotateY) * 0.1;
-        rotateX += (-mouseY * 0.05 - rotateX) * 0.1;
-        card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+    }
+  </script>
+</body>
+</html>
